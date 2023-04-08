@@ -1,0 +1,20 @@
+create table files (
+  id int primary key,
+  created_at text not null,
+  updated_at text not null,
+  deleted_at text,
+  account_id int not null,
+
+  name text not null,
+  size int not null default 0,
+  mime text,
+  url text,
+  attributes text,
+  foreign key (account_id) references accounts (id)
+) strict;
+
+create index idx_files_created on files (created_at);
+create index idx_files_updated on files (updated_at);
+create index idx_files_deleted on files (deleted_at) where deleted_at IS NOT NULL;
+create index idx_files_account on files (account_id, mime, created_at);
+create index idx_files_size on files (size);
