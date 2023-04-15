@@ -11,7 +11,7 @@ create table files (
   url text,
   attributes text,
   foreign key (account_id) references accounts (id)
-) strict;
+);
 
 create index idx_files_created on files (created_at);
 create index idx_files_updated on files (updated_at);

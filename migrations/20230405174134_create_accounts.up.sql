@@ -11,7 +11,7 @@ create table accounts (
   -- json
   profile text,
   attributes text
-) STRICT;
+);
 
 create index idx_acc_uniq_name on accounts (name);
 create unique index idx_acc_uniq_email on accounts (email collate nocase);
