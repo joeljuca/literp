@@ -15,7 +15,7 @@ db.create_migration:
 	migrate create -ext sql -dir migrations "$(name)"
 
 db.up:
-	migrate -source "file://migrations" -database "database.sqlite" up
+	migrate -source "file://migrations" -database "sqlite://database.sqlite" up
 
 db.down:
-	migrate -source "file://migrations" -database "database.sqlite" down
+	migrate -source "file://migrations" -database "sqlite://database.sqlite" down
