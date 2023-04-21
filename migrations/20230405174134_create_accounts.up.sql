@@ -10,7 +10,7 @@ create table accounts (
 
   -- json
   profile text,
-  attributes text
+  meta text
 );
 
 create index idx_acc_uniq_name on accounts (name);

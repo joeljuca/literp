@@ -9,7 +9,7 @@ create table files (
   size integer not null default 0,
   mime text,
   url text,
-  attributes text,
+  meta text,
   foreign key (account_id) references accounts (id)
 );
 
