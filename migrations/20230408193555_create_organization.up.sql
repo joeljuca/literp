@@ -6,7 +6,10 @@ create table organizations (
   is_active integer not null default 1,
   title text not null,
 
-  meta text
+  meta text,
+
+  check(is_active in (0, 1)),
+  check(json_type(meta) = "object")
 );
 
 create index idx_org_title on organizations (is_active, title);

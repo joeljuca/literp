@@ -9,8 +9,11 @@ create table files (
   size integer not null default 0,
   mime text,
   url text,
+
   meta text,
-  foreign key (account_id) references accounts (id)
+
+  foreign key (account_id) references accounts (id),
+  check(json_type(meta) = "object")
 );
 
 create index idx_files_created on files (created_at);
