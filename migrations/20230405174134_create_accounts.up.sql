@@ -1,9 +1,9 @@
 create table accounts (
-  id int primary key,
+  id integer primary key,
   created_at text not null,
   updated_at text not null,
 
-  is_active int not null default 1,
+  is_active integer not null default 1,
   name text not null,
   email text not null,
   phone text,

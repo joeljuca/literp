@@ -1,12 +1,12 @@
 create table files (
-  id int primary key,
+  id integer primary key,
   created_at text not null,
   updated_at text not null,
   deleted_at text,
-  account_id int not null,
+  account_id integer not null,
 
   name text not null,
-  size int not null default 0,
+  size integer not null default 0,
   mime text,
   url text,
   attributes text,
