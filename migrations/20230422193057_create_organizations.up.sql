@@ -10,7 +10,7 @@ create table organizations (
 
   check(is_active in (0, 1)),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create index idx_orgs_created on organizations (created_at);
 create index idx_orgs_name    on organizations (is_active, name collate nocase);
@@ -30,4 +30,4 @@ create table mtm_organizations_users (
   foreign key (user_id) references users (id),
 
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);

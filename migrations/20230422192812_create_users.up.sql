@@ -14,7 +14,7 @@ create table users (
   check(is_active in (0, 1)),
   check(json_valid(profile) and json_type(profile) = "object"),
   check(json_valid(meta)   and json_type(meta)   = "object")
-) strict;
+);
 
 create unique index idx_uniq_users_email on users (email collate nocase);
 create unique index idx_uniq_users_phone on users (phone);
@@ -38,6 +38,6 @@ create table users_recovery_codes (
 
   check(length(code) > 6),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create unique index idx_uniq_recvcodes_user on users_recovery_codes (user_id);

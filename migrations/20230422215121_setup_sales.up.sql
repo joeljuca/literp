@@ -20,7 +20,7 @@ create table sales_clients (
 
   check(json_valid(profile) and json_type(profile) = "object"),
   check(json_valid(meta)   and json_type(meta)   = "object")
-) strict;
+);
 
 create unique index idx_uniq_clients_email on sales_clients (email collate nocase);
 
@@ -49,7 +49,7 @@ create table sales_services (
   check(is_active in (0, 1)),
   check(price >= 0),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -71,7 +71,7 @@ create table sales_products (
   check(is_active in (0, 1)),
   check(price >= 0),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -93,7 +93,7 @@ create table sales_bundles (
   check(is_active in (0, 1)),
   check(price >= 0),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -123,7 +123,7 @@ create table sales_bundle_items (
   ),
   check(quantity >= 1),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -144,7 +144,7 @@ create table sales_categories (
 
   check(is_active in (0, 1)),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -161,7 +161,7 @@ create table sales_mtm_categories_products (
   foreign key (product_id)  references sales_products(id),
 
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -178,7 +178,7 @@ create table sales_mtm_categories_services (
   foreign key (service_id)  references sales_services(id),
 
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 --
 
@@ -204,7 +204,7 @@ create table sales_sessions (
 
   check(status in (0, 1, 2)),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create unique index idx_uniq_sess_org_client on sales_sessions (org_id, client_id)
   where status in (1);
@@ -231,7 +231,7 @@ create table sales_orders (
   
   check(status in (0, 1, 2, 3, 4, 5)),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create index idx_orders_created on sales_orders (created_at);
 create index idx_orders_user    on sales_orders (user_id);
@@ -274,6 +274,6 @@ create table sales_order_items (
     (type = 3 and bundle_id IS NOT NULL) -- if bundle, requires bundle_id
   ),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create index idx_order_items_order_type on sales_order_items (order_id, type);

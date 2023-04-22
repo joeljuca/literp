@@ -17,7 +17,7 @@ create table files (
 
   check(size >= 0),
   check(json_valid(meta) and json_type(meta) = "object")
-) strict;
+);
 
 create index idx_files_org     on files (org_id, user_id);
 create index idx_files_created on files (created_at);
