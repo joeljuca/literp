@@ -110,7 +110,6 @@ create table sales_bundle_items (
 
   meta text,
 
-  foreign key (org_id)     references organizations (id),
   foreign key (bundle_id)  references sales_bundles (id),
   foreign key (product_id) references sales_products (id),
   foreign key (service_id) references sales_services (id),
@@ -234,9 +233,7 @@ create table sales_orders (
 );
 
 create index idx_orders_created on sales_orders (created_at);
-create index idx_orders_user    on sales_orders (user_id);
-create index idx_orders_client  on sales_orders (client_id);
-create index idx_orders_status  on sales_orders (status_id);
+create index idx_orders_status  on sales_orders (status);
 
 --
 
