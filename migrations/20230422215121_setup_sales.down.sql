@@ -1,0 +1,11 @@
+drop table if exists sales_clients;
+drop table if exists sales_services;
+drop table if exists sales_products;
+drop table if exists sales_bundles;
+drop table if exists sales_bundle_items;
+drop table if exists sales_categories;
+drop table if exists sales_mtm_categories_products;
+drop table if exists sales_mtm_categories_services;
+drop table if exists sales_sessions;
+drop table if exists sales_orders;
+drop table if exists sales_order_items;
