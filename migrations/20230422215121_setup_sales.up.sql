@@ -219,7 +219,7 @@ create table sales_orders (
   created_at text not null,
   updated_at text,
   session_id integer not null,
-  -- status (canceled: 0, completed: 1, ordering: 2, ordered: 3, ongoing: 4, ready: 5)
+  -- status (canceled: 0, completed: 1, estimate: 2, ordering: 3, ordered: 4, ongoing: 5, ready: 6)
   status     integer not null default 2,
   notes      text,
 
@@ -228,7 +228,7 @@ create table sales_orders (
 
   foreign key (session_id) references sales_sessions (id),
   
-  check(status in (0, 1, 2, 3, 4, 5)),
+  check(status in (0, 1, 2, 3, 4, 5, 6)),
   check(json_valid(meta) and json_type(meta) = "object")
 );
 
