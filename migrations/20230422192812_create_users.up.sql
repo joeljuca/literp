@@ -25,26 +25,6 @@ create index        idx_users_name       on users (name  collate nocase);
 
 --
 
-create table users_recovery_codes (
-  id         integer primary key,
-  created_at text not null,
-  expires_at text not null,
-  user_id    integer not null,
-  code       text not null,
-
-  -- json
-  meta text,
-
-  foreign key (user_id) references users (id),
-
-  check(length(code) > 6),
-  check(json_valid(meta) and json_type(meta) = "object")
-);
-
-create unique index idx_uniq_recvcodes_user on users_recovery_codes (user_id);
-
---
-
 create profiles (
   id         integer primary key,
   created_at text not null,
