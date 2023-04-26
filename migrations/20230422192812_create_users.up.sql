@@ -25,7 +25,7 @@ create index        idx_users_name       on users (name  collate nocase);
 
 --
 
-create profiles (
+create table profiles (
   id         integer primary key,
   created_at text not null,
   updated_at text,
