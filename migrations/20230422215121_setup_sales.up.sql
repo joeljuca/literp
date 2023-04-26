@@ -9,16 +9,15 @@ create table sales_clients (
   name       text not null,
   email      text not null,
   phone      text,
-
+  profile_id integer,
 
   -- json
-  profile text,
-  meta   text,
+  meta text,
 
-  foreign key (org_id)  references organizations (id),
-  foreign key (user_id) references users (id),
+  foreign key (org_id)      references organizations (id),
+  foreign key (user_id)     references users (id),
+  foreign key (profile_id)  references profiles (id),
 
-  check(json_valid(profile) and json_type(profile) = "object"),
   check(json_valid(meta)   and json_type(meta)   = "object")
 );
 
