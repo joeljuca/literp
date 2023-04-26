@@ -12,7 +12,7 @@ create table sales_clients (
   profile_id integer,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id)      references organizations (id),
   foreign key (user_id)     references users (id),
@@ -41,7 +41,7 @@ create table sales_services (
   description text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id) references organizations (id),
 
@@ -63,7 +63,7 @@ create table sales_products (
   description text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id) references organizations (id),
 
@@ -85,7 +85,7 @@ create table sales_bundles (
   description text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id) references organizations (id),
 
@@ -107,7 +107,7 @@ create table sales_bundle_items (
   service_id integer,
   quantity   integer not null default 1,
 
-  meta text,
+  meta text not null default "{}",
 
   foreign key (bundle_id)  references sales_bundles (id),
   foreign key (product_id) references sales_products (id),
@@ -135,7 +135,7 @@ create table sales_categories (
   title      text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id)    references organizations (id),
   foreign key (parent_id) references sales_categories (id),
@@ -152,7 +152,7 @@ create table sales_mtm_categories_products (
   created_at  text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   primary key (category_id, product_id),
   foreign key (category_id) references sales_categories(id),
@@ -169,7 +169,7 @@ create table sales_mtm_categories_services (
   created_at  text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   primary key (category_id, service_id),
   foreign key (category_id) references sales_categories(id),
@@ -193,7 +193,7 @@ create table sales_sessions (
   notes        text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id)       references organizations (id),
   foreign key (user_id)      references users (id),
@@ -223,7 +223,7 @@ create table sales_orders (
   notes      text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (session_id) references sales_sessions (id),
 
@@ -251,7 +251,7 @@ create table sales_order_items (
   notes      text,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (order_id)   references sales_orders (id),
   foreign key (product_id) references sales_products (id),

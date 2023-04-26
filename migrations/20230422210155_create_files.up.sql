@@ -10,7 +10,7 @@ create table files (
   url        text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (org_id)  references organizations (id),
   foreign key (user_id) references users (id),

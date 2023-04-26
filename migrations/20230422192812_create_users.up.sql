@@ -9,7 +9,7 @@ create table users (
   profile_id integer,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (profile_id) references profiles (id),
 
@@ -32,8 +32,8 @@ create table profiles (
   name       text not null,
 
   -- json
-  profile text,
-  meta    text,
+  profile text not null default "{}",
+  meta    text not null default "{}",
 
   check(json_valid(profile) and json_type(profile) = "object"),
   check(json_valid(meta)    and json_type(meta)    = "object")

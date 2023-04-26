@@ -10,7 +10,7 @@ create table sales_bills (
   status     integer not null default 2,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (client_id)  references sales_clients (id),
   foreign key (session_id) references sales_sessions (id),
@@ -33,7 +33,7 @@ create table sales_payment_methods (
 
   -- json
   details text not null,
-  meta    text,
+  meta    text not null default "{}",
 
   foreign key (client_id) references sales_clients (id),
 
@@ -80,7 +80,7 @@ create table sales_payment_proofs (
   file_id    integer not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   foreign key (payment_id) references payments (id),
   foreign key (file_id)    references files (id),

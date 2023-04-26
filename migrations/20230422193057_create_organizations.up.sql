@@ -6,7 +6,7 @@ create table organizations (
   name       text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   check(is_active in (0, 1)),
   check(json_valid(meta) and json_type(meta) = "object")
@@ -23,7 +23,7 @@ create table mtm_organizations_users (
   created_at text not null,
 
   -- json
-  meta text,
+  meta text not null default "{}",
 
   primary key (org_id, user_id),
   foreign key (org_id)  references organizations (id),
