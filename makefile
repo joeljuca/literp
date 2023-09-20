@@ -1,5 +1,7 @@
 .PHONY: db.create db.drop db.reset db.create_migration db.up db.down
 
+# this is a comment
+
 db.create:
 	sqlite3 database.sqlite 'select 1'
 
