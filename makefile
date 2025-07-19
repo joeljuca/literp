@@ -1,4 +1,4 @@
-.PHONY: db.create db.drop db.reset db.create_migration db.up db.down
+.PHONY: db.create db.drop db.reset db.create_migration db.up db.down test
 
 db.create:
 	sqlite3 database.sqlite 'select 1'
@@ -19,3 +19,6 @@ db.up:
 
 db.down:
 	migrate -source "file://migrations" -database "sqlite://database.sqlite" down
+
+test:
+	make db.reset && bats test/*.bats
